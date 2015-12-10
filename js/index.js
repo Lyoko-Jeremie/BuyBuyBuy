@@ -12,7 +12,7 @@ app.run(
         };
 
         $rootScope.centerData = {
-            NowPage: "subtemplate/init.html"
+            NowPage: ""
         };
         $rootScope.centerData.topHrPx = $rootScope.menuData.topPx + $rootScope.menuData.heightPx;
         $rootScope.centerData.topPx = $rootScope.centerData.topHrPx;
