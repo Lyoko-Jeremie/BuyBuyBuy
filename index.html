@@ -5,25 +5,29 @@
     <meta charset="UTF-8">
     <!--//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css-->
     <link rel="stylesheet" href="js/bootstrap.min.css">
+    <!--//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css-->
+    <link rel="stylesheet" href="js/bootstrap-theme.min.css">
+    <!--ui-bootstrap-tpls需要bootstrap-theme-->
     <!--https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js-->
-    <script src="js/angular.min.js"></script>
+    <script src="js/angular.js"></script>
+    <!--angularjs-ui 为bootstrap与angularjs做的解决方案-->
+    <script src="js/ui-bootstrap-tpls-0.14.3.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/init.js"></script>
 </head>
 <body>
 
 <!--固定头部开始-->
-<div class="bg-info">
+<header class="bg-info">
 
     <span>
         <!--左头部LOGO-->
         <a href="#">
-            <img class=".img-responsive" src="img/BBB.png">
+            <img class=".img-responsive" src="img/BBB.png" alt="BuyBuyBuy">
         </a>
     </span>
 
 
-</div>
+</header>
 
 
 <!--菜单栏-->
@@ -55,6 +59,10 @@
                         <button type="submit" class="btn btn-default">搜索</button>
                     </form>
                 </li>
+                <li>
+                    <!--占位符-->
+                    <a></a>
+                </li>
                 <li> <!--class="active"-->
                     <a href="#" ng-click="UserFunc.Check()">购物车</a>
                 </li>
@@ -80,13 +88,13 @@
                             <input type="text" ng-model="user.Name" class="form-control" placeholder="UserName">
                             <input type="password" ng-model="user.Password" class="form-control" placeholder="Password">
                         </div>
-                        <button ng-click="user.ToLoginIn()" type="submit" class="btn btn-default">登录</button>
+                        <button ng-click="user.ToLogIn()" type="submit" class="btn btn-primary">登录</button>
+                        <button ng-click="user.ToLogNew()" type="submit" class="btn btn-info">注册</button>
                     </form>
                 </li>
-
                 <!--登出-->
                 <li ng-show="user.Logined">
-                    <a href="#" ng-click="user.ToLoginOut()">欢迎， {{user.Name}} 登出</a>
+                    <a href="#" ng-click="user.ToLogOut()">欢迎， {{user.Name}} 登出</a>
                 </li>
             </ul>
 
@@ -100,9 +108,74 @@
 
 <!--中部可变区开始-->
 
-<div>
+<div class="container-fluid">
 
-    中部可变区
+    <!--中部可变区-->
+    <!--style="display: table;width: auto;margin-top: auto;margin-left: auto;"-->
+    <!--<center></center>-->
+    <section ng-show='centerData.NowPage=="welcome"' style="text-align: center;">
+        <!--welcome page-->
+        <span>
+            <h1>欢迎来到BuyBuyBuy
+                <small>(买断手)</small>
+                商城
+            </h1>
+            <h3>请从左上角登录进入</h3>
+        </span>
+    </section>
+
+    <section ng-show='centerData.NowPage=="login_error"' style="text-align: center;">
+        <!--login error page-->
+        <span>
+            <h1>欢迎来到BuyBuyBuy
+                <small>(买断手)</small>
+                商城
+            </h1>
+            <h3>登陆无效</h3>
+        </span>
+    </section>
+
+    <section ng-show='centerData.NowPage=="login_ok"'>
+        <!--login ok page-->
+        <div style="text-align: center;">
+            <h1>欢迎来到BuyBuyBuy
+                <small>(买断手)</small>
+                商城
+            </h1>
+        </div>
+        <div>
+            ss
+        </div>
+    </section>
+
+    <section ng-show='centerData.NowPage=="lognew"' style="text-align: center;">
+        <!--log new page-->
+        <span>
+            <h1>欢迎来到BuyBuyBuy
+                <small>(买断手)</small>
+                商城
+            </h1>
+            <h3>{{user.Name}}</h3>
+            <h3 ng-show="lognew.ok">注册成功，请使用刚才的账号密码登录</h3>
+            <h3 ng-show="!lognew.ok">已经被注册了，请尝试更换用户名</h3>
+        </span>
+    </section>
+
+    <section ng-show='centerData.NowPage=="explorer"'>
+        <!--浏览商品页-->
+        <div style="text-align: center;">
+            <h1>欢迎来到BuyBuyBuy
+                <small>(买断手)</small>
+                商城
+            </h1>
+        </div>
+        <div>
+            ss
+        </div>
+    </section>
+
+
+
 
 </div>
 
@@ -113,30 +186,46 @@
 
 
 <!--固定底部开始-->
-<div class="bg-info .container-fluid">
+<footer class="bg-info .container-fluid">
     <!--固定底部-->
 
 
 
     <span class="row">
-        <span class="col-md-2 col-md-offset-1">
-            <a class="btn btn-info" href="#">公司简介</a>
-            <a class="btn btn-info" href="#">品牌理念</a>
-            <a class="btn btn-info" href="#">商城介绍</a>
+        <span class="col-md-1">
         </span>
-        <span class="col-md-2">
-            <a class="btn btn-info" href="#">团队文化</a>
-            <a class="btn btn-info" href="#">关于我们</a>
-            <a class="btn btn-info" href="#">联系我们</a>
+        <span class="col-md-1">
+            <a class="btn btn-link" href="#">公司简介</a>
         </span>
-        <span class="col-md-1 col-md-offset-5">
-            <a class="btn btn-info" href="#">购包常识</a>
+        <span class="col-md-1">
+            <a class="btn btn-link" href="#">商城介绍</a>
+        </span>
+        <span class="col-md-1">
+            <a class="btn btn-link" href="#">品牌理念</a>
+        </span>
+        <span class="col-md-1">
+            <a class="btn btn-link" href="#">团队文化</a>
+        </span>
+        <span class="col-md-1">
+            <a class="btn btn-link" href="#">关于我们</a>
+        </span>
+        <span class="col-md-1">
+            <a class="btn btn-link" href="#">联系我们</a>
+        </span>
+        <span class="col-md-1">
+            <a class="btn btn-link" href="#">购包常识</a>
         </span>
     </span>
 
 
-</div>
+</footer>
 <!--固定底部结束-->
+
+<!--开发者检查-->
+<section ng-show="DebugMode">
+    {{centerData.NowPage}}
+</section>
+
 
 </body>
 </html>

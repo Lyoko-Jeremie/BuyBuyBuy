@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ui.bootstrap']);
 
 app.run(
     function ($rootScope) {
@@ -12,8 +12,13 @@ app.run(
         };
 
         $rootScope.centerData = {
-            NowPage: ""
+            NowPage: "welcome"
         };
+
+        // 故障检查模式
+        $rootScope.DebugMode = true;
+
+
         $rootScope.centerData.topHrPx = $rootScope.menuData.topPx + $rootScope.menuData.heightPx;
         $rootScope.centerData.topPx = $rootScope.centerData.topHrPx;
         $rootScope.centerData.heightPx = 200;
@@ -43,14 +48,24 @@ app.run(
             Password: "",
             Logined: false,
             IsAdmin: false,
-            ToLoginIn: function () {
+            ToLogIn: function () {
                 this.Logined = true;
                 this.IsAdmin = false;
+                $rootScope.centerData.NowPage = "login_ok";
             },
-            ToLoginOut: function () {
+            ToLogOut: function () {
                 this.Logined = false;
                 this.IsAdmin = false;
+                this.Password = "";
+            },
+            ToLogNew: function () {
+                // TODO
+                $rootScope.centerData.NowPage = "lognew";
             }
+        };
+
+        $rootScope.lognew = {
+            ok: true
         };
 
     }
