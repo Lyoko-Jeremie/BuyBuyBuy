@@ -39,12 +39,13 @@ app.run(
 
 
         $rootScope.user = {
-            Name: "ahhhhh",
+            Name: "",
+            Password: "",
             Logined: false,
             IsAdmin: false,
             ToLoginIn: function () {
                 this.Logined = true;
-                this.IsAdmin = true;
+                this.IsAdmin = false;
             },
             ToLoginOut: function () {
                 this.Logined = false;
