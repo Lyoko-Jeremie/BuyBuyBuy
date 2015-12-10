@@ -1,0 +1,97 @@
+<!doctype html>
+<html ng-app="myApp" lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <!--//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css-->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!--https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js-->
+    <script src="js/angular.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/init.js"></script>
+</head>
+<body>
+
+<!--固定头部开始-->
+<div style="position: relative;">
+
+    <span style="position: relative;left: 10px; height: {{logoData.heightPx}}px;">
+        <!--左头部LOGO-->
+        <a href="#">
+            <img src="">
+        </a>
+    </span>
+
+    <span ng-controller="userLogin" style="position: absolute;right: 10px;">
+        <!--右用户区-->
+        <span ng-show="!user.Logined">
+            <a href="#" ng-click="user.ToLoginIn()">点击登录</a>
+        </span>
+        <span ng-show="user.Logined">
+            欢迎， {{user.Name}}
+            <a href="#" ng-click="user.ToLoginOut()">点击登出</a>
+        </span>
+    </span>
+
+</div>
+<div ng-controller="menu"
+     style="position: absolute; right: 10px; top: {{menuData.topPx}}px; height: {{menuData.heightPx}}px;">
+    <!--菜单栏-->
+    <span ng-show="user.IsAdmin">
+        <a href="#" ng-click="AdminFunc.User()">会员管理</a>
+        <a href="#" ng-click="AdminFunc.Product()">产品管理</a>
+        <a href="#" ng-click="AdminFunc.Check()">订单管理</a>
+    </span>
+    <span ng-show="!user.IsAdmin">
+        <a href="#" ng-click="UserFunc.Check()">购物车</a>
+        <a href="#" ng-click="UserFunc.Pay()">支付功</a>
+        <a href="#" ng-click="UserFunc.Search()">产品搜索</a>
+        <a href="#" ng-click="UserFunc.Help()">帮助中心</a>
+    </span>
+</div>
+<!--固定头部结束-->
+
+<hr style="position: relative; top: {{centerData.topHrPx}}px;">
+
+<!--中部可变区开始-->
+
+<div ng-include="{{centerData.NowPage}}" style="position: relative; top: {{centerData.topPx}}px;height: {{centerData.heightPx}}px; text-align: center;">
+
+    中部可变区
+
+</div>
+
+
+<!--中部可变区结束-->
+
+<hr style="position: relative; top: {{centerData.downHrPx}}px;">
+
+
+<!--固定底部开始-->
+<div style="position: relative; top: {{bottomData.topPx}}px;">
+    <!--固定底部-->
+
+
+
+    <span>
+        <span style="position: relative;left: 5px;">
+            <a href="#" style="position: absolute;width: 100px;top: {{bottomData.topAbout.line1}}px;">关于我们</a>
+            <a href="#" style="position: absolute;width: 100px;top: {{bottomData.topAbout.line2}}px;">公司简介</a>
+            <a href="#" style="position: absolute;width: 100px;top: {{bottomData.topAbout.line3}}px;">品牌理念</a>
+            <a href="#" style="position: absolute;width: 100px;top: {{bottomData.topAbout.line4}}px;">商城介绍</a>
+            <a href="#" style="position: absolute;width: 100px;top: {{bottomData.topAbout.line5}}px;">团队文化</a>
+            <a href="#" style="position: absolute;width: 100px;top: {{bottomData.topAbout.line6}}px;">联系我们</a>
+        </span>
+        <span>
+            <a href="#"
+               style="position: absolute;width: 100px;right: 50px;top: {{bottomData.topOther.line1}}px;">购包常识</a>
+        </span>
+    </span>
+
+
+</div>
+<!--固定底部结束-->
+
+</body>
+</html>
+
