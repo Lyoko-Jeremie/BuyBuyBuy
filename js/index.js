@@ -57,6 +57,7 @@ app.run(
                 this.Logined = false;
                 this.IsAdmin = false;
                 this.Password = "";
+                $rootScope.centerData.NowPage = "welcome";
             },
             ToLogNew: function () {
                 // TODO
@@ -64,9 +65,34 @@ app.run(
             }
         };
 
+        $rootScope.SearchThingsName = "";
+
         $rootScope.lognew = {
             ok: true
         };
+        $rootScope.exploreredThingS = [
+            {
+                Thins: {
+                    img: "",
+                    name: "1233",
+                    texts: "213",
+                    id: 123456
+                }
+            },
+            {
+                Thins: {
+                    img: "",
+                    name: "1233",
+                    texts: "213",
+                    id: 123456
+                }
+            }
+        ];
+
+        $rootScope.explorerClick = function (ID) {
+            alert(ID);
+        };
+
 
     }
 );
@@ -104,7 +130,8 @@ app.controller('menu', function ($scope) {
 
     };
     $scope.UserFunc.Help = function () {
-
+        // TODO fix centerData访问不到的问题 添加service来解决
+        centerData.NowPage = "help";
     };
 
 });

@@ -54,9 +54,9 @@
                 <li ng-show="!user.IsAdmin">
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="产品搜索">
+                            <input type="text" ng-model="SearchThingsName" class="form-control" placeholder="产品搜索">
                         </div>
-                        <button type="submit" class="btn btn-default">搜索</button>
+                        <button ng-click="UserFunc.Search()" type="submit" class="btn btn-default">搜索</button>
                     </form>
                 </li>
                 <li>
@@ -68,9 +68,6 @@
                 </li>
                 <li> <!--class="active"-->
                     <a href="#" ng-click="UserFunc.Pay()">支付</a>
-                </li>
-                <li> <!--class="active"-->
-                    <a href="#" ng-click="UserFunc.Search()">产品搜索</a>
                 </li>
                 <li> <!--class="active"-->
                     <a href="#" ng-click="UserFunc.Help()">帮助中心</a>
@@ -143,8 +140,8 @@
                 商城
             </h1>
         </div>
-        <div>
-            ss
+        <div style="text-align: center;">
+            <a ng-click='centerData.NowPage="explorer"'>ss</a>
         </div>
     </section>
 
@@ -170,11 +167,44 @@
             </h1>
         </div>
         <div>
-            ss
+            <ul class="row">
+                <li class="col-md-1" ng-repeat="(Thins, Obj) in exploreredThingS">
+                    <div>
+                        <!--TODO 使用 directive实现此-->
+                        <a ng-click="explorerClick({{Obj.id}})">
+                            <img src="{{Obj.img}}" alt="{{Obj.texts}}">
+                        </a>
+                    </div>
+                    <div>
+                        <a ng-click="explorerClick({{Obj.id}})">
+                            <h4>
+                                {{Obj.name}}
+                            </h4>
+                        </a>
+                    </div>
+                    <div>
+                        <h4>
+                            <small>
+                                {{Obj.texts}}
+                            </small>
+                        </h4>
+                    </div>
+                    {{Obj.name}}'s favorite color is {{Obj.color}}
+                </li>
+            </ul>
         </div>
     </section>
 
-
+    <section ng-show='centerData.NowPage=="help"' style="text-align: center;">
+        <!--help page-->
+        <span>
+            <h1>欢迎来到BuyBuyBuy
+                <small>(买断手)</small>
+                商城
+            </h1>
+            <h3>请选择您的问题：</h3>
+        </span>
+    </section>
 
 
 </div>
