@@ -89,7 +89,6 @@ app.run(
             alert(Obj.id);
         };
 
-
     }
 );
 
@@ -122,9 +121,6 @@ app.controller('menu', function ($scope) {
     $scope.UserFunc.Pay = function () {
 
     };
-    $scope.UserFunc.Search = function () {
-
-    };
     $scope.UserFunc.Help = function () {
         // TODO fix centerData访问不到的问题 添加service来解决
         centerData.NowPage = "help";
@@ -133,41 +129,8 @@ app.controller('menu', function ($scope) {
 });
 
 
-
-
 app.controller('ProductExplorerList', function ($scope) {
 
-});
-
-
-
-app.directive('productExplorerListRow', function () {
-    return{
-        terminal: true,
-        scope: {},
-        template:
-        '<div>' +
-        '<a ng-click="explorerClick({Thing:Obj})">' +
-        '<img src="{{Obj.img}}" style="height: 200px;width: 200px;" alt="{{Obj.texts}}">' +
-        '</a>' +
-        '</div>' +
-        '<div>' +
-        '<a ng-click="explorerClick({Thing:Obj})">' +
-        '<h4>' +
-        '{{Obj.name}}' +
-        '</h4>' +
-        '</a>' +
-        '</div>' +
-        '<div>' +
-        '<h4>' +
-        '<small>' +
-        '{{Obj.texts}}' +
-        '</small>' +
-        '</h4>' +
-        '</div>',
-
-        restrict: 'EA',
-    }
 });
 
 
