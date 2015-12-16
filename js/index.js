@@ -89,6 +89,31 @@ app.run(
             alert(Obj.id);
         };
 
+
+        $rootScope.AdminFunc = {};
+        $rootScope.AdminFunc.User = function () {
+
+        };
+        $rootScope.AdminFunc.Product = function () {
+
+        };
+        $rootScope.AdminFunc.Check = function () {
+
+        };
+
+
+        $rootScope.UserFunc = {};
+        $rootScope.UserFunc.Check = function () {
+
+        };
+        $rootScope.UserFunc.Pay = function () {
+
+        };
+        $rootScope.UserFunc.Help = function () {
+            $rootScope.centerData.NowPage = "help";
+        };
+
+
     }
 );
 
@@ -102,29 +127,6 @@ app.controller('userLogin', function ($scope) {
 
 
 app.controller('menu', function ($scope) {
-    $scope.AdminFunc = {};
-    $scope.AdminFunc.User = function () {
-
-    };
-    $scope.AdminFunc.Product = function () {
-
-    };
-    $scope.AdminFunc.Check = function () {
-
-    };
-
-
-    $scope.UserFunc = {};
-    $scope.UserFunc.Check = function () {
-
-    };
-    $scope.UserFunc.Pay = function () {
-
-    };
-    $scope.UserFunc.Help = function () {
-        // TODO fix centerData访问不到的问题 添加service来解决
-        centerData.NowPage = "help";
-    };
 
 });
 
