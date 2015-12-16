@@ -72,25 +72,21 @@ app.run(
         };
         $rootScope.exploreredThingS = [
             {
-                Thins: {
-                    img: "",
-                    name: "1233",
-                    texts: "213",
-                    id: 123456
-                }
+                img: "",
+                name: "1233",
+                texts: "213",
+                id: 123456
             },
             {
-                Thins: {
-                    img: "",
-                    name: "1233",
-                    texts: "213",
-                    id: 123456
-                }
+                img: "",
+                name: "1233",
+                texts: "213",
+                id: 123456
             }
         ];
 
-        $rootScope.explorerClick = function (ID) {
-            alert(ID);
+        $rootScope.explorerClick = function (Thing) {
+            alert(Obj.id);
         };
 
 
@@ -138,6 +134,10 @@ app.controller('menu', function ($scope) {
 
 
 
+
+app.controller('ProductExplorerList', function ($scope) {
+
+});
 
 
 

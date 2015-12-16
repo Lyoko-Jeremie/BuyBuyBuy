@@ -105,7 +105,7 @@
 
 <!--中部可变区开始-->
 
-<div class="container-fluid">
+<div class="container">
 
     <!--中部可变区-->
     <!--style="display: table;width: auto;margin-top: auto;margin-left: auto;"-->
@@ -167,31 +167,36 @@
             </h1>
         </div>
         <div>
-            <ul class="row">
-                <li class="col-md-1" ng-repeat="(Thins, Obj) in exploreredThingS">
-                    <div>
-                        <!--TODO 使用 directive实现此-->
-                        <a ng-click="explorerClick({{Obj.id}})">
-                            <img src="{{Obj.img}}" alt="{{Obj.texts}}">
-                        </a>
-                    </div>
-                    <div>
-                        <a ng-click="explorerClick({{Obj.id}})">
-                            <h4>
-                                {{Obj.name}}
-                            </h4>
-                        </a>
-                    </div>
-                    <div>
+            <dl class="row" ng-controller="">
+                <dt class="col-md-2" ng-repeat="Obj in exploreredThingS">
+                <div>
+                    <a ng-click="explorerClick({Thing:Obj})">
+                        <img src="{{Obj.img}}" style="height: 200px;width: 200px;" alt="{{Obj.texts}}">
+                    </a>
+                </div>
+                <div>
+                    <a ng-click="explorerClick({Thing:Obj})">
                         <h4>
-                            <small>
-                                {{Obj.texts}}
-                            </small>
+                            {{Obj.name}}
                         </h4>
-                    </div>
-                    {{Obj.name}}'s favorite color is {{Obj.color}}
-                </li>
-            </ul>
+                    </a>
+                </div>
+                <div>
+                    <h4>
+                        <small>
+                            {{Obj.texts}}
+                        </small>
+                    </h4>
+                </div>
+                </dt>
+            </dl>
+        </div>
+    </section>
+
+    <section ng-show='centerData.NowPage=="showProduct"' style="text-align: center;">
+        <!--商品页-->
+        <div>
+
         </div>
     </section>
 
