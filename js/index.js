@@ -141,7 +141,34 @@ app.controller('ProductExplorerList', function ($scope) {
 
 
 
+app.directive('productExplorerListRow', function () {
+    return{
+        terminal: true,
+        scope: {},
+        template:
+        '<div>' +
+        '<a ng-click="explorerClick({Thing:Obj})">' +
+        '<img src="{{Obj.img}}" style="height: 200px;width: 200px;" alt="{{Obj.texts}}">' +
+        '</a>' +
+        '</div>' +
+        '<div>' +
+        '<a ng-click="explorerClick({Thing:Obj})">' +
+        '<h4>' +
+        '{{Obj.name}}' +
+        '</h4>' +
+        '</a>' +
+        '</div>' +
+        '<div>' +
+        '<h4>' +
+        '<small>' +
+        '{{Obj.texts}}' +
+        '</small>' +
+        '</h4>' +
+        '</div>',
 
+        restrict: 'EA',
+    }
+});
 
 
 

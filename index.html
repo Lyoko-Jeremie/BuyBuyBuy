@@ -167,27 +167,33 @@
             </h1>
         </div>
         <div>
-            <dl class="row" ng-controller="">
+            <dl class="row" ng-controller="ProductExplorerList">
                 <dt class="col-md-2" ng-repeat="Obj in exploreredThingS">
-                <div>
-                    <a ng-click="explorerClick({Thing:Obj})">
-                        <img src="{{Obj.img}}" style="height: 200px;width: 200px;" alt="{{Obj.texts}}">
-                    </a>
-                </div>
-                <div>
-                    <a ng-click="explorerClick({Thing:Obj})">
-                        <h4>
-                            {{Obj.name}}
-                        </h4>
-                    </a>
-                </div>
-                <div>
-                    <h4>
-                        <small>
-                            {{Obj.texts}}
-                        </small>
-                    </h4>
-                </div>
+                    <product-explorer-list-row things="{{Obj}}">
+
+                    </product-explorer-list-row>
+
+
+                <!--<div>-->
+                    <!--<a ng-click="explorerClick({Thing:Obj})">-->
+                        <!--<img src="{{Obj.img}}" style="height: 200px;width: 200px;" alt="{{Obj.texts}}">-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<a ng-click="explorerClick({Thing:Obj})">-->
+                        <!--<h4>-->
+                            <!--{{Obj.name}}-->
+                        <!--</h4>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<h4>-->
+                        <!--<small>-->
+                            <!--{{Obj.texts}}-->
+                        <!--</small>-->
+                    <!--</h4>-->
+                <!--</div>-->
+
                 </dt>
             </dl>
         </div>
