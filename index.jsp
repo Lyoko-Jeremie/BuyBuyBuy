@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html ng-app="myApp" lang="zh-CN">
 
@@ -168,33 +170,35 @@
         </div>
         <div>
             <dl class="row" ng-controller="ProductExplorerList">
-                <dt class="col-md-2" ng-repeat="Obj in exploreredThingS">
-                    <product-explorer-list-row things="{{Obj}}">
-
-                    </product-explorer-list-row>
-
-
-                <!--<div>-->
-                    <!--<a ng-click="explorerClick({Thing:Obj})">-->
-                        <!--<img src="{{Obj.img}}" style="height: 200px;width: 200px;" alt="{{Obj.texts}}">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<a ng-click="explorerClick({Thing:Obj})">-->
-                        <!--<h4>-->
-                            <!--{{Obj.name}}-->
-                        <!--</h4>-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<h4>-->
-                        <!--<small>-->
-                            <!--{{Obj.texts}}-->
-                        <!--</small>-->
-                    <!--</h4>-->
-                <!--</div>-->
-
-                </dt>
+            	<c:forEach items="${items}" var="va">
+	                <dt class="col-md-2">
+	                    <product-explorer-list-row things="${va.id }">
+	
+	                    </product-explorer-list-row>
+	
+	
+	                <div>
+	                    <a ng-click="explorerClick(${va.id})">
+	                        <img src="${va.img}" style="height: 200px;width: 200px;" alt="${va.texts}">
+	                    </a>
+	                </div>
+	                <div>
+	                    <a ng-click="explorerClick(${va.id})">
+	                        <h4>
+	                            ${va.name}
+	                        </h4>
+	                    </a>
+	                </div>
+	                <div>
+	                    <h4>
+	                        <small>
+	                            ${va.texts}
+	                        </small>
+	                    </h4>
+	                </div>
+	
+	                </dt>
+                </c:forEach>
             </dl>
         </div>
     </section>
@@ -216,6 +220,27 @@
             <h3>请选择您的问题：</h3>
         </span>
     </section>
+    
+    <section ng-show='centerData.NowPage=="about"' style="text-align: center;">
+        <!--about page-->
+        <h2>公司简介</h2>
+        <p>
+			BuyBuyBuy买断手购物成立于 2005 年 11 
+		月，是中国最大最专业的跨境电子商务网站。是由山东省汉邦影音技术有限公司投资成立的，是国内最早致力于跨境购物的互联网公司，中国唯一一家可以帮助客户
+		免除美国消费税的商家。通过九年的努力，美国购物网成功入驻中国（上海）自由贸易试验区项目与河南保税物流中心，与众多知名商家、知名品牌建立了合作关
+		系，并且在美国纽约、美国洛杉矶、美国俄勒冈等地设有分支机构。
+		</p>
+		<p>
+			美国购物网可以代购美国品牌服饰、箱包、运动鞋、保健品、化妆品、名表首饰、户外装备、家居母婴用品、家庭影院等
+		商品，相比国内专柜同品牌、同型号商品可节省高达50%的费用，还能让客户在省钱的同时买到一些国内未上市的产品。代购的商品均由美国分公司采用统一的物
+		流配送——纽约全一快递，由美国发货直接寄至客户手中，无需经过国内转运。使用人民币支付，化解众多跨境购物支付难题，并为客户提供完善的售后服务，24
+		小时中英文客户服务热线（400-667-7878），实现无障碍跨国购物。代购的美国商品，7-14个工作日直达客户手中，在家轻松购遍美国，足不出
+		户，即可同享美国高品质生活。
+		</p>
+		<p>
+			美国购物网秉承“全面，完善，便捷，贴心”的理念，努力为用户提供更多元化的商品、更优惠的价格、更专业的服务，为发展为最具人气、最受用户信赖的专业国际跨境电子商务集团而努力,也为营造一个和谐正规安全的跨境电子购物新环境而努力!
+		</p>
+    </section>
 
 
 </div>
@@ -236,7 +261,7 @@
         <span class="col-md-1">
         </span>
         <span class="col-md-1">
-            <a class="btn btn-link" href="#">公司简介</a>
+            <a class="btn btn-link" href="#" ng-click='centerData.NowPage="about"'>公司简介</a>
         </span>
         <span class="col-md-1">
             <a class="btn btn-link" href="#">商城介绍</a>
