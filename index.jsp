@@ -170,14 +170,8 @@
         </div>
         <div>
             <dl class="row" ng-controller="ProductExplorerList">
-<<<<<<< HEAD:index.jsp
             	<c:forEach items="${items}" var="va">
 	                <dt class="col-md-2">
-	                    <product-explorer-list-row things="${va.id }">
-	
-	                    </product-explorer-list-row>
-	
-	
 	                <div>
 	                    <a ng-click="explorerClick(${va.id})">
 	                        <img src="${va.img}" style="height: 200px;width: 200px;" alt="${va.texts}">
@@ -200,32 +194,6 @@
 	
 	                </dt>
                 </c:forEach>
-=======
-                <dt class="col-md-2" >
-
-                <!--TODO 服务器实现-->
-                <!--<div>-->
-                <!--<a ng-click="ThisThings={{Obj}}">-->
-                        <!--<img src="{{Obj.img}}" style="height: 200px;width: 200px;" alt="{{Obj.texts}}">-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<a ng-click="ThisThings={{Obj}}">-->
-                        <!--<h4>-->
-                            <!--{{Obj.name}}-->
-                        <!--</h4>-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<h4>-->
-                        <!--<small>-->
-                            <!--{{Obj.texts}}-->
-                        <!--</small>-->
-                    <!--</h4>-->
-                <!--</div>-->
-
-                </dt>
->>>>>>> origin/Jeremie:index.html
             </dl>
         </div>
     </section>
