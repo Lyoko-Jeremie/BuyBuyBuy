@@ -1,5 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!doctype html>
 <html ng-app="myApp" lang="zh-CN">
 
@@ -169,31 +168,28 @@
             </h1>
         </div>
         <div>
-            <dl class="row" ng-controller="ProductExplorerList">
-            	<c:forEach items="${items}" var="va">
-	                <dt class="col-md-2">
-	                <div>
-	                    <a ng-click="explorerClick(${va.id})">
-	                        <img src="${va.img}" style="height: 200px;width: 200px;" alt="${va.texts}">
-	                    </a>
-	                </div>
-	                <div>
-	                    <a ng-click="explorerClick(${va.id})">
-	                        <h4>
-	                            ${va.name}
-	                        </h4>
-	                    </a>
-	                </div>
-	                <div>
-	                    <h4>
-	                        <small>
-	                            ${va.texts}
-	                        </small>
-	                    </h4>
-	                </div>
-	
-	                </dt>
-                </c:forEach>
+            <dl class="row">
+                <dt class="col-md-2" ng-repeat='Objs in exploreredThingS'>
+                <div>
+                    <a ng-click="explorerClick(Objs.id)">
+                        <img src="{{Objs.img}}" style="height: 200px;width: 200px;" alt="{{Objs.texts}}">
+                    </a>
+                </div>
+                <div>
+                    <a ng-click="explorerClick(Objs.id)">
+                        <h4>
+                            {{Objs.name}}
+                        </h4>
+                    </a>
+                </div>
+                <div>
+                    <h4>
+                        <small>
+                            {{Objs.texts}}
+                        </small>
+                    </h4>
+                </div>
+                </dt>
             </dl>
         </div>
     </section>
