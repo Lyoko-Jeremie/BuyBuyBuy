@@ -90,6 +90,30 @@ app.run(
         };
 
 
+        $rootScope.AdminFunc = {};
+        $rootScope.AdminFunc.User = function () {
+
+        };
+        $rootScope.AdminFunc.Product = function () {
+
+        };
+        $rootScope.AdminFunc.Check = function () {
+
+        };
+
+
+        $rootScope.UserFunc = {};
+        $rootScope.UserFunc.Check = function () {
+
+        };
+        $rootScope.UserFunc.Pay = function () {
+
+        };
+        $rootScope.UserFunc.Help = function () {
+            $rootScope.centerData.NowPage = "help";
+        };
+
+
     }
 );
 
@@ -103,71 +127,12 @@ app.controller('userLogin', function ($scope) {
 
 
 app.controller('menu', function ($scope) {
-    $scope.AdminFunc = {};
-    $scope.AdminFunc.User = function () {
-
-    };
-    $scope.AdminFunc.Product = function () {
-
-    };
-    $scope.AdminFunc.Check = function () {
-
-    };
-
-
-    $scope.UserFunc = {};
-    $scope.UserFunc.Check = function () {
-
-    };
-    $scope.UserFunc.Pay = function () {
-
-    };
-    $scope.UserFunc.Search = function () {
-
-    };
-    $scope.UserFunc.Help = function () {
-        // TODO fix centerData访问不到的问题 添加service来解决
-        centerData.NowPage = "help";
-    };
 
 });
-
-
 
 
 app.controller('ProductExplorerList', function ($scope) {
 
-});
-
-
-
-app.directive('productExplorerListRow', function () {
-    return{
-        terminal: true,
-        scope: {},
-        template:
-        '<div>' +
-        '<a ng-click="explorerClick({Thing:Obj})">' +
-        '<img src="{{Obj.img}}" style="height: 200px;width: 200px;" alt="{{Obj.texts}}">' +
-        '</a>' +
-        '</div>' +
-        '<div>' +
-        '<a ng-click="explorerClick({Thing:Obj})">' +
-        '<h4>' +
-        '{{Obj.name}}' +
-        '</h4>' +
-        '</a>' +
-        '</div>' +
-        '<div>' +
-        '<h4>' +
-        '<small>' +
-        '{{Obj.texts}}' +
-        '</small>' +
-        '</h4>' +
-        '</div>',
-
-        restrict: 'EA',
-    }
 });
 
 
