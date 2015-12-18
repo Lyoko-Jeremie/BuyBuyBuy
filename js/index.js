@@ -85,8 +85,8 @@ app.run(
             }
         ];
 
-        $rootScope.explorerClick = function (Thing) {
-            alert(Obj.id);
+        $rootScope.explorerClick = function (Obj) {
+            alert(Obj);
         };
 
 

@@ -167,24 +167,24 @@
             </h1>
         </div>
         <div>
-            <dl class="row" ng-controller="">
-                <dt class="col-md-2" ng-repeat="Obj in exploreredThingS">
+            <dl class="row">
+                <dt class="col-md-2" ng-repeat='Objs in exploreredThingS'>
                 <div>
-                    <a ng-click="explorerClick({Thing:Obj})">
-                        <img src="{{Obj.img}}" style="height: 200px;width: 200px;" alt="{{Obj.texts}}">
+                    <a ng-click="explorerClick(Objs.id)">
+                        <img src="{{Objs.img}}" style="height: 200px;width: 200px;" alt="{{Objs.texts}}">
                     </a>
                 </div>
                 <div>
-                    <a ng-click="explorerClick({Thing:Obj})">
+                    <a ng-click="explorerClick(Objs.id)">
                         <h4>
-                            {{Obj.name}}
+                            {{Objs.name}}
                         </h4>
                     </a>
                 </div>
                 <div>
                     <h4>
                         <small>
-                            {{Obj.texts}}
+                            {{Objs.texts}}
                         </small>
                     </h4>
                 </div>
