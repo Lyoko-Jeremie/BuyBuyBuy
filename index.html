@@ -15,6 +15,7 @@
     <script src="js/index.js"></script>
     <link rel="stylesheet" href="js/laoding.css">
     <link rel="stylesheet" href="js/center.css">
+    <link rel="stylesheet" href="js/sticky-footer.css">
 </head>
 <body>
 
@@ -427,13 +428,17 @@
 
 <!--中部可变区结束-->
 
-<hr>
+<!--<hr>-->
+
+<!--开发者检查-->
+<section ng-show="DebugMode" style="position: absolute;top: 0px;right: 0px;color: white;">
+    开发者检查:{{centerData.NowPage}}
+</section>
 
 
 <!--固定底部开始-->
-<footer class="bg-info .container-fluid">
+<footer class="footer bg-info .container-fluid">
     <!--固定底部-->
-
 
 
     <span class="row">
@@ -465,11 +470,6 @@
 
 </footer>
 <!--固定底部结束-->
-
-<!--开发者检查-->
-<section ng-show="DebugMode">
-    {{centerData.NowPage}}
-</section>
 
 
 </body>
