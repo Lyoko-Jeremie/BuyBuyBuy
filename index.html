@@ -10,12 +10,17 @@
     <!--ui-bootstrap-tpls需要bootstrap-theme-->
     <!--https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js-->
     <script src="js/angular.js"></script>
+    <!--https://ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-cookies.js-->
+    <script src="js/angular-cookies.js"></script>
     <!--angularjs-ui 为bootstrap与angularjs做的解决方案-->
     <script src="js/ui-bootstrap-tpls-0.14.3.js"></script>
     <script src="js/index.js"></script>
     <link rel="stylesheet" href="js/laoding.css">
     <link rel="stylesheet" href="js/center.css">
     <link rel="stylesheet" href="js/sticky-footer.css">
+    <title>
+        BuyBuyBuy商城
+    </title>
 </head>
 <body style="overflow-y:hidden;">
 
@@ -94,7 +99,7 @@
                 </li>
                 <!--登出-->
                 <li ng-show="user.Logined">
-                    <a href="#" ng-click="user.ToLogOut()">欢迎， {{user.Name}} 登出</a>
+                    <a href="#" ng-click="user.ToLogOut()">欢迎，{{user.Name}}&nbsp;&nbsp;&nbsp;<u>点这里安全登出</u></a>
                 </li>
             </ul>
 
@@ -116,21 +121,34 @@
     <section ng-switch-when="welcome" class="text-center">
         <!--welcome page-->
         <span>
+            <!--XHTML实现-->
             <h1>
                 欢迎来到
                 <ruby>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
+                    Buy
                     <rp>
                         <small>(</small>
                     </rp>
                     <rt>
                         <small>买</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>断</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>手</small>
                     </rt>
@@ -147,21 +165,34 @@
     <section ng-switch-when="login_error" class="text-center">
         <!--login error page-->
         <span>
+            <!--XHTML实现-->
             <h1>
                 欢迎来到
                 <ruby>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
+                    Buy
                     <rp>
                         <small>(</small>
                     </rp>
                     <rt>
                         <small>买</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>断</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>手</small>
                     </rt>
@@ -178,21 +209,34 @@
     <section ng-switch-when="login_ok">
         <!--login ok page-->
         <div class="text-center">
+            <!--XHTML实现-->
             <h1>
                 欢迎来到
                 <ruby>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
+                    Buy
                     <rp>
                         <small>(</small>
                     </rp>
                     <rt>
                         <small>买</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>断</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>手</small>
                     </rt>
@@ -204,7 +248,7 @@
             </h1>
         </div>
         <div class="text-center">
-            <a class="btn btn-primary" ng-click='centerData.NowPage="explorer"'>点击进入</a>
+            <a class="btn btn-primary" ng-click='centerData.NowPage="explorer"'>浏览所有产品</a>
             <!--TODO 用户信息  用户欢迎 页-->
         </div>
     </section>
@@ -212,21 +256,34 @@
     <section ng-switch-when="lognew" class="text-center">
         <!--log new page-->
         <span>
+            <!--XHTML实现-->
             <h1>
                 欢迎来到
                 <ruby>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
+                    Buy
                     <rp>
                         <small>(</small>
                     </rp>
                     <rt>
                         <small>买</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>断</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>手</small>
                     </rt>
@@ -245,21 +302,34 @@
     <section ng-switch-when="explorer">
         <!--浏览商品页-->
         <div class="text-center">
+            <!--XHTML实现-->
             <h1>
                 欢迎来到
                 <ruby>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
+                    Buy
                     <rp>
                         <small>(</small>
                     </rp>
                     <rt>
                         <small>买</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>断</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>手</small>
                     </rt>
@@ -345,21 +415,34 @@
     <section ng-switch-when="help" class="text-center">
         <!--help page-->
         <span>
+            <!--XHTML实现-->
             <h1>
                 欢迎来到
                 <ruby>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
-                    <rb> Buy</rb>
+                    Buy
                     <rp>
                         <small>(</small>
                     </rp>
                     <rt>
                         <small>买</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>断</small>
                     </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                    Buy
+                    <rp>
+                        <small>(</small>
+                    </rp>
                     <rt>
                         <small>手</small>
                     </rt>
@@ -375,21 +458,34 @@
 
     <section ng-switch-when="aboutCompany" class="text-center">
         <!--about page-->
+        <!--XHTML实现-->
         <h1>
             欢迎来到
             <ruby>
-                <rb> Buy</rb>
-                <rb> Buy</rb>
-                <rb> Buy</rb>
+                Buy
                 <rp>
                     <small>(</small>
                 </rp>
                 <rt>
                     <small>买</small>
                 </rt>
+                <rp>
+                    <small>)</small>
+                </rp>
+                Buy
+                <rp>
+                    <small>(</small>
+                </rp>
                 <rt>
                     <small>断</small>
                 </rt>
+                <rp>
+                    <small>)</small>
+                </rp>
+                Buy
+                <rp>
+                    <small>(</small>
+                </rp>
                 <rt>
                     <small>手</small>
                 </rt>
@@ -425,21 +521,34 @@
 
     <section ng-switch-when="aboutBBB" class="text-center">
         <!--about page-->
+        <!--XHTML实现-->
         <h1>
             欢迎来到
             <ruby>
-                <rb> Buy</rb>
-                <rb> Buy</rb>
-                <rb> Buy</rb>
+                Buy
                 <rp>
                     <small>(</small>
                 </rp>
                 <rt>
                     <small>买</small>
                 </rt>
+                <rp>
+                    <small>)</small>
+                </rp>
+                Buy
+                <rp>
+                    <small>(</small>
+                </rp>
                 <rt>
                     <small>断</small>
                 </rt>
+                <rp>
+                    <small>)</small>
+                </rp>
+                Buy
+                <rp>
+                    <small>(</small>
+                </rp>
                 <rt>
                     <small>手</small>
                 </rt>

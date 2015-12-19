@@ -1,8 +1,8 @@
-var app = angular.module('myApp', ['ui.bootstrap']);
+var app = angular.module('myApp', ['ui.bootstrap', 'ngCookies']);
 
 app.run(
-    ['$rootScope', '$http',
-        function ($rootScope, $http) {
+    ['$rootScope', '$http', '$cookies',
+        function ($rootScope, $http, $cookies) {
             $rootScope.a = "Ari Lener";
             $rootScope.logoData = {
                 heightPx: 50
@@ -95,7 +95,7 @@ app.run(
                                 $rootScope.user.Logined = true;
                                 $rootScope.user.IsAdmin = false;
                                 $rootScope.user.ID = data.data;
-                                // TODO delay
+                                $rootScope.user.SaveInfoToCookie();
                                 $rootScope.centerData.NowPage = "login_ok";
                                 return;
                             }
@@ -110,22 +110,14 @@ app.run(
                         $rootScope.user.Logined = false;
                         $rootScope.user.IsAdmin = false;
                         $rootScope.user.Password = "";
-                        //if (response.status == 404) {
-                        //    return;
-                        //}
-                        //$rootScope.centerData.NowPage = "login_error";
                     });
-
-                    // debug
-                    //this.Logined = true;
-                    //this.IsAdmin = false;
-                    //$rootScope.centerData.NowPage = "welcome";
                 },
                 ToLogOut: function () {
                     this.Logined = false;
                     this.IsAdmin = false;
                     this.Password = "";
                     this.ID = 0;
+                    this.RemoveInfoCookie();
                     $rootScope.centerData.NowPage = "welcome";
                 },
                 ToLogNew: function () {
@@ -161,11 +153,47 @@ app.run(
                     }, function (response) {
                         console.log(response);
                         $rootScope.loadingPage.loadEndFalse(response);
-                        // TODO delay
                         $rootScope.lognew.ok = false;
                     });
+                },
+                ReadInfoFromCookie: function () {
+                    //JSON.parse($cookies.get("userinfo"));
+                    //console.log($cookies.getAll());
+                    //console.log($cookies.get("userinfo"));
+                    //console.log(JSON.parse($cookies.get("userinfo")));
+                    if (angular.isString($cookies.get("userinfo"))) {
+                        try {
+                            var ui = JSON.parse($cookies.get("userinfo"));
+                            this.ID = ui.ID;
+                            this.Name = ui.Name;
+                            this.Password = ui.Password;
+                            this.Logined = ui.Logined;
+                            this.IsAdmin = ui.IsAdmin;
+                            return true;
+                        } catch (e) {
+                            console.log(e);
+                            return false;
+                        }
+                    }
+                    return false;
+                },
+                SaveInfoToCookie: function () {
+                    $cookies.putObject("userinfo", {
+                        ID: this.ID,
+                        Name: this.Name,
+                        Password: this.Password,
+                        Logined: this.Logined,
+                        IsAdmin: this.IsAdmin
+                    });
+                },
+                RemoveInfoCookie: function () {
+                    $cookies.remove("userinfo");
                 }
             };
+            if (true == $rootScope.user.ReadInfoFromCookie()) {
+                $rootScope.centerData.NowPage = "login_ok";
+            }
+
 
             $rootScope.SearchThingsName = "";
 
@@ -218,7 +246,6 @@ app.run(
                 }, function (response) {
                     console.log(response);
                     $rootScope.loadingPage.loadEndFalse(response);
-                    // TODO delay
                     $rootScope.centerData.NowPage = "explorer";
                 });
             };
@@ -251,6 +278,37 @@ app.run(
             };
             $rootScope.UserFunc.Pay = function () {
 
+            };
+            $rootScope.UserFunc.Search = function () {
+
+                $rootScope.loadingPage.loadTo();
+                $http({
+                    method: 'get',
+                    url: 'search',
+                    params: {
+                        "text": SearchThingsName
+                    },
+                    timeout: 3000
+                }).then(function (response) {
+                    console.log(response);
+                    $rootScope.loadingPage.loadEndOk();
+                    if ("OK" == response.statusText) {
+                        var data = response.data;
+                        if (0 == data.err) {
+                            $rootScope.NowProduct = data.data;
+                            $rootScope.centerData.NowPage = "showProduct";
+                            return;
+                        }
+                        $rootScope.centerData.NowPage = "noProduct";
+                        return;
+                    }
+                    $rootScope.loadingPage.loadEndFalse(response);
+                    return;
+                }, function (response) {
+                    console.log(response);
+                    $rootScope.loadingPage.loadEndFalse(response);
+                    $rootScope.centerData.NowPage = "explorer";
+                });
             };
             $rootScope.UserFunc.Help = function () {
                 $rootScope.centerData.NowPage = "help";
