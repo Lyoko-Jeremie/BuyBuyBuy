@@ -203,15 +203,33 @@ app.run(
                 }).then(function (response) {
                     console.log(response);
                     $rootScope.loadingPage.loadEndOk();
-                    // TODO delay
-                    // TODO 填充
-                    $rootScope.centerData.NowPage = "showProduct";
+                    if ("OK" == response.statusText) {
+                        var data = response.data;
+                        if (0 == data.err) {
+                            $rootScope.NowProduct = data.data;
+                            $rootScope.centerData.NowPage = "showProduct";
+                            return;
+                        }
+                        $rootScope.centerData.NowPage = "noProduct";
+                        return;
+                    }
+                    $rootScope.loadingPage.loadEndFalse(response);
+                    return;
                 }, function (response) {
                     console.log(response);
                     $rootScope.loadingPage.loadEndFalse(response);
                     // TODO delay
                     $rootScope.centerData.NowPage = "explorer";
                 });
+            };
+
+
+            $rootScope.NowProduct = {
+                id: 0,
+                name: "",
+                price: 0,
+                img: "",
+                texts: ""
             };
 
 
@@ -242,29 +260,6 @@ app.run(
         }
     ]
 );
-
-//angular.module('myApp',[]).factory('UserInfoService', function () {
-//
-//});
-
-
-app.controller('userLogin', function ($scope) {
-});
-
-
-app.controller('menu', function ($scope) {
-
-});
-
-
-app.controller('ProductExplorerList', function ($scope) {
-
-});
-
-app.controller('loginForm', function ($scope) {
-
-});
-
 
 
 

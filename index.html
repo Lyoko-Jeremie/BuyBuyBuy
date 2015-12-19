@@ -33,7 +33,7 @@
 
 
 <!--菜单栏-->
-<nav ng-controller="menu" class="navbar navbar-default">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="collapse navbar-collapse">
 
@@ -78,7 +78,7 @@
 
 
             <!--左区-->
-            <ul ng-controller="userLogin" class="nav navbar-nav navbar-left">
+            <ul class="nav navbar-nav navbar-left">
 
                 <!--登录-->
                 <li ng-show="!user.Logined">
@@ -115,8 +115,28 @@
     <section ng-switch-when="welcome" class="text-center">
         <!--welcome page-->
         <span>
-            <h1>欢迎来到BuyBuyBuy
-                <small>(买断手)</small>
+            <h1>
+                欢迎来到
+                <ruby>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rp>
+                        <small>(</small>
+                    </rp>
+                    <rt>
+                        <small>买</small>
+                    </rt>
+                    <rt>
+                        <small>断</small>
+                    </rt>
+                    <rt>
+                        <small>手</small>
+                    </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                </ruby>
                 商城
             </h1>
             <h3>请从左上角登录进入</h3>
@@ -126,8 +146,28 @@
     <section ng-switch-when="login_error" class="text-center">
         <!--login error page-->
         <span>
-            <h1>欢迎来到BuyBuyBuy
-                <small>(买断手)</small>
+            <h1>
+                欢迎来到
+                <ruby>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rp>
+                        <small>(</small>
+                    </rp>
+                    <rt>
+                        <small>买</small>
+                    </rt>
+                    <rt>
+                        <small>断</small>
+                    </rt>
+                    <rt>
+                        <small>手</small>
+                    </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                </ruby>
                 商城
             </h1>
             <h3>登陆无效</h3>
@@ -137,8 +177,28 @@
     <section ng-switch-when="login_ok">
         <!--login ok page-->
         <div class="text-center">
-            <h1>欢迎来到BuyBuyBuy
-                <small>(买断手)</small>
+            <h1>
+                欢迎来到
+                <ruby>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rp>
+                        <small>(</small>
+                    </rp>
+                    <rt>
+                        <small>买</small>
+                    </rt>
+                    <rt>
+                        <small>断</small>
+                    </rt>
+                    <rt>
+                        <small>手</small>
+                    </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                </ruby>
                 商城
             </h1>
         </div>
@@ -150,8 +210,28 @@
     <section ng-switch-when="lognew" class="text-center">
         <!--log new page-->
         <span>
-            <h1>欢迎来到BuyBuyBuy
-                <small>(买断手)</small>
+            <h1>
+                欢迎来到
+                <ruby>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rp>
+                        <small>(</small>
+                    </rp>
+                    <rt>
+                        <small>买</small>
+                    </rt>
+                    <rt>
+                        <small>断</small>
+                    </rt>
+                    <rt>
+                        <small>手</small>
+                    </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                </ruby>
                 商城
             </h1>
             <h3>{{lognew.userName}}</h3>
@@ -163,8 +243,28 @@
     <section ng-switch-when="explorer">
         <!--浏览商品页-->
         <div class="text-center">
-            <h1>欢迎来到BuyBuyBuy
-                <small>(买断手)</small>
+            <h1>
+                欢迎来到
+                <ruby>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rp>
+                        <small>(</small>
+                    </rp>
+                    <rt>
+                        <small>买</small>
+                    </rt>
+                    <rt>
+                        <small>断</small>
+                    </rt>
+                    <rt>
+                        <small>手</small>
+                    </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                </ruby>
                 商城
             </h1>
         </div>
@@ -202,6 +302,13 @@
         </div>
     </section>
 
+    <section ng-switch-when="noProduct" class="text-center">
+        <!--no商品页-->
+        <div>
+            <h1>商品不见了？？！！</h1>
+        </div>
+    </section>
+
     <section ng-switch-when="showLoading" class="text-center">
         <!--等待页-->
         <div>
@@ -236,8 +343,28 @@
     <section ng-switch-when="help" class="text-center">
         <!--help page-->
         <span>
-            <h1>欢迎来到BuyBuyBuy
-                <small>(买断手)</small>
+            <h1>
+                欢迎来到
+                <ruby>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rb> Buy</rb>
+                    <rp>
+                        <small>(</small>
+                    </rp>
+                    <rt>
+                        <small>买</small>
+                    </rt>
+                    <rt>
+                        <small>断</small>
+                    </rt>
+                    <rt>
+                        <small>手</small>
+                    </rt>
+                    <rp>
+                        <small>)</small>
+                    </rp>
+                </ruby>
                 商城
             </h1>
             <h3>请选择您的问题：</h3>
@@ -246,25 +373,51 @@
 
     <section ng-switch-when="about" class="text-center">
         <!--about page-->
+        <h1>
+            欢迎来到
+            <ruby>
+                <rb> Buy</rb>
+                <rb> Buy</rb>
+                <rb> Buy</rb>
+                <rp>
+                    <small>(</small>
+                </rp>
+                <rt>
+                    <small>买</small>
+                </rt>
+                <rt>
+                    <small>断</small>
+                </rt>
+                <rt>
+                    <small>手</small>
+                </rt>
+                <rp>
+                    <small>)</small>
+                </rp>
+            </ruby>
+            商城
+        </h1>
         <h2>公司简介</h2>
 
         <p>
-            BuyBuyBuy买断手购物成立于 2005 年 11
-            月，是中国最大最专业的跨境电子商务网站。是由山东省汉邦影音技术有限公司投资成立的，是国内最早致力于跨境购物的互联网公司，中国唯一一家可以帮助客户
-            免除美国消费税的商家。通过九年的努力，美国购物网成功入驻中国（上海）自由贸易试验区项目与河南保税物流中心，与众多知名商家、知名品牌建立了合作关
-            系，并且在美国纽约、美国洛杉矶、美国俄勒冈等地设有分支机构。
+            BuyBuyBuy买断手购物网成立于 2005 年 11 月，是中国最大最专业的跨境电子商务网站。
+            是由山东省汉邦影音技术有限公司投资成立的，是国内最早致力于跨境购物的互联网公司，
+            中国唯一一家可以帮助客户免除美国消费税的商家。
+            通过九年的努力，BuyBuyBuy买断手购物网成功入驻中国（上海）自由贸易试验区项目与河南保税物流中心，
+            与众多知名商家、知名品牌建立了合作关系，并且在美国纽约、美国洛杉矶、美国俄勒冈等地设有分支机构。
         </p>
 
         <p>
-            美国购物网可以代购美国品牌服饰、箱包、运动鞋、保健品、化妆品、名表首饰、户外装备、家居母婴用品、家庭影院等
-            商品，相比国内专柜同品牌、同型号商品可节省高达50%的费用，还能让客户在省钱的同时买到一些国内未上市的产品。代购的商品均由美国分公司采用统一的物
-            流配送——纽约全一快递，由美国发货直接寄至客户手中，无需经过国内转运。使用人民币支付，化解众多跨境购物支付难题，并为客户提供完善的售后服务，24
-            小时中英文客户服务热线（400-667-7878），实现无障碍跨国购物。代购的美国商品，7-14个工作日直达客户手中，在家轻松购遍美国，足不出
-            户，即可同享美国高品质生活。
+            BuyBuyBuy买断手购物网可以代购美国品牌服饰、箱包、运动鞋、保健品、化妆品、名表首饰、户外装备、家居母婴用品、家庭影院等商品，
+            相比国内专柜同品牌、同型号商品可节省高达50%的费用，还能让客户在省钱的同时买到一些国内未上市的产品。
+            代购的商品均由美国分公司采用统一的物流配送——纽约全一快递，由美国发货直接寄至客户手中，无需经过国内转运。
+            使用人民币支付，化解众多跨境购物支付难题，并为客户提供完善的售后服务，24小时中英文客户服务热线（400-667-7878），
+            实现无障碍跨国购物。代购的美国商品，7-14个工作日直达客户手中，在家轻松购遍美国，足不出户，即可同享美国高品质生活。
         </p>
 
         <p>
-            美国购物网秉承“全面，完善，便捷，贴心”的理念，努力为用户提供更多元化的商品、更优惠的价格、更专业的服务，为发展为最具人气、最受用户信赖的专业国际跨境电子商务集团而努力,也为营造一个和谐正规安全的跨境电子购物新环境而努力!
+            BuyBuyBuy买断手购物网秉承“全面，完善，便捷，贴心”的理念，努力为用户提供更多元化的商品、更优惠的价格、更专业的服务，
+            为发展为最具人气、最受用户信赖的专业国际跨境电子商务集团而努力,也为营造一个和谐正规安全的跨境电子购物新环境而努力!
         </p>
     </section>
 
