@@ -207,15 +207,43 @@ app.run(
                     img: "",
                     name: "1233",
                     texts: "213",
+                    price: 0,
                     id: 123456
                 },
                 {
                     img: "",
                     name: "4566",
                     texts: "213",
+                    price: 0,
                     id: 45678
                 }
             ];
+
+            $rootScope.GetProductList = function () {
+                $rootScope.loadingPage.loadTo();
+                $http({
+                    method: 'get',
+                    url: 'getItems',
+                    timeout: 3000
+                }).then(function (response) {
+                    console.log(response);
+                    $rootScope.loadingPage.loadEndOk();
+                    if ("OK" == response.statusText) {
+                        var data = response.data;
+                        if (0 == data.err) {
+                            $rootScope.exploreredThingS = data.data;
+                            $rootScope.centerData.NowPage = "explorer";
+                            return;
+                        }
+                    }
+                    $rootScope.loadingPage.loadEndFalse(response);
+                    return;
+                }, function (response) {
+                    console.log(response);
+                    $rootScope.loadingPage.loadEndFalse(response);
+                    $rootScope.centerData.NowPage = "explorer";
+                });
+            };
 
             $rootScope.explorerClick = function (Obj) {
                 console.log(Obj.id);
@@ -224,9 +252,6 @@ app.run(
                 $http({
                     method: 'get',
                     url: 'getItemById',
-                    params: {
-                        "id": Obj.id
-                    },
                     timeout: 3000
                 }).then(function (response) {
                     console.log(response);
