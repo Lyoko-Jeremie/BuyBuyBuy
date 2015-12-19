@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="js/center.css">
     <link rel="stylesheet" href="js/sticky-footer.css">
 </head>
-<body>
+<body style="overflow-y:hidden;">
 
 <!--固定头部开始-->
 <header class="bg-info">
@@ -205,6 +205,7 @@
         </div>
         <div class="text-center">
             <a class="btn btn-primary" ng-click='centerData.NowPage="explorer"'>点击进入</a>
+            <!--TODO 用户信息  用户欢迎 页-->
         </div>
     </section>
 
@@ -299,7 +300,7 @@
     <section ng-switch-when="showProduct" class="text-center">
         <!--商品页-->
         <div>
-
+            <!--TODO 商品展示页-->
         </div>
     </section>
 
@@ -372,7 +373,7 @@
         </span>
     </section>
 
-    <section ng-switch-when="about" class="text-center">
+    <section ng-switch-when="aboutCompany" class="text-center">
         <!--about page-->
         <h1>
             欢迎来到
@@ -422,6 +423,48 @@
         </p>
     </section>
 
+    <section ng-switch-when="aboutBBB" class="text-center">
+        <!--about page-->
+        <h1>
+            欢迎来到
+            <ruby>
+                <rb> Buy</rb>
+                <rb> Buy</rb>
+                <rb> Buy</rb>
+                <rp>
+                    <small>(</small>
+                </rp>
+                <rt>
+                    <small>买</small>
+                </rt>
+                <rt>
+                    <small>断</small>
+                </rt>
+                <rt>
+                    <small>手</small>
+                </rt>
+                <rp>
+                    <small>)</small>
+                </rp>
+            </ruby>
+            商城
+        </h1>
+        <h2>商城简介</h2>
+
+        <p>
+            BuyBuyBuy买断手购物网可以代购美国品牌服饰、箱包、运动鞋、保健品、化妆品、名表首饰、户外装备、家居母婴用品、家庭影院等商品，
+            相比国内专柜同品牌、同型号商品可节省高达50%的费用，还能让客户在省钱的同时买到一些国内未上市的产品。
+            代购的商品均由美国分公司采用统一的物流配送——纽约全一快递，由美国发货直接寄至客户手中，无需经过国内转运。
+            使用人民币支付，化解众多跨境购物支付难题，并为客户提供完善的售后服务，24小时中英文客户服务热线（400-667-7878），
+            实现无障碍跨国购物。代购的美国商品，7-14个工作日直达客户手中，在家轻松购遍美国，足不出户，即可同享美国高品质生活。
+        </p>
+
+        <p>
+            BuyBuyBuy买断手购物网秉承“全面，完善，便捷，贴心”的理念，努力为用户提供更多元化的商品、更优惠的价格、更专业的服务，
+            为发展为最具人气、最受用户信赖的专业国际跨境电子商务集团而努力,也为营造一个和谐正规安全的跨境电子购物新环境而努力!
+        </p>
+    </section>
+
 
 </div>
 
@@ -445,25 +488,19 @@
         <span class="col-md-1">
         </span>
         <span class="col-md-1">
-            <a class="btn btn-link" href="#" ng-click='centerData.NowPage="about"'>公司简介</a>
+            <a class="btn btn-link" href="#" ng-click='centerData.NowPage="aboutCompany"'>公司简介</a>
         </span>
         <span class="col-md-1">
-            <a class="btn btn-link" href="#">商城介绍</a>
+            <a class="btn btn-link" href="#" ng-click='centerData.NowPage="aboutBBB"'>商城介绍</a>
         </span>
         <span class="col-md-1">
-            <a class="btn btn-link" href="#">品牌理念</a>
+            <a class="btn btn-link" href="#" ng-click='centerData.NowPage="aboutCulture"'>团队文化</a>
         </span>
         <span class="col-md-1">
-            <a class="btn btn-link" href="#">团队文化</a>
+            <a class="btn btn-link" href="#" ng-click='centerData.NowPage="aboutUs"'>关于我们</a>
         </span>
         <span class="col-md-1">
-            <a class="btn btn-link" href="#">关于我们</a>
-        </span>
-        <span class="col-md-1">
-            <a class="btn btn-link" href="#">联系我们</a>
-        </span>
-        <span class="col-md-1">
-            <a class="btn btn-link" href="#">购包常识</a>
+            <a class="btn btn-link" href="#" ng-click='centerData.NowPage="callUs"'>联系我们</a>
         </span>
     </span>
 
