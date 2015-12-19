@@ -86,8 +86,9 @@ app.run(
         ];
 
         $rootScope.explorerClick = function (Obj) {
-            alert(Obj.id);
-            // TODO
+            console.log(Obj.id);
+            // TODO 跳转到等待页 发起请求 回调函数失败跳转回本页 成功跳转到显示页并填充数据   JSONP
+            $rootScope.centerData.NowPage ="showProduct";
         };
 
 
