@@ -79,14 +79,15 @@ app.run(
             },
             {
                 img: "",
-                name: "1233",
+                name: "4566",
                 texts: "213",
-                id: 123456
+                id: 45678
             }
         ];
 
         $rootScope.explorerClick = function (Obj) {
-            alert(Obj);
+            alert(Obj.id);
+            // TODO
         };
 
 
@@ -132,6 +133,10 @@ app.controller('menu', function ($scope) {
 
 
 app.controller('ProductExplorerList', function ($scope) {
+
+});
+
+app.controller('loginForm', function ($scope) {
 
 });
 
