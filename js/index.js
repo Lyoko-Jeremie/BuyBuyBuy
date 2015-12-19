@@ -58,6 +58,7 @@ app.run(
             };
 
             $rootScope.user = {
+                ID: 0,
                 Name: "",
                 Password: "",
                 Logined: false,
@@ -67,7 +68,7 @@ app.run(
                     $rootScope.loadingPage.loadto();
                     $http({
                         method: 'get',
-                        url: '/shop/login',
+                        url: 'login',
                         params: {
                             "username": this.Name,
                             "password": this.Password
@@ -76,19 +77,27 @@ app.run(
                     }).then(function (response) {
                         console.log(response);
                         $rootScope.loadingPage.loadend(true);
-                        this.Logined = true;
-                        this.IsAdmin = false;
-                        // TODO delay
-                        // TODO 填充 判断
-                        $rootScope.centerData.NowPage = "login_ok";
-                        //$rootScope.centerData.NowPage = "login_error";
+                        if ("OK" == response.statusText) {
+                            var data = response.data;
+                            if (0 == data.err) {
+                                $rootScope.user.Logined = true;
+                                $rootScope.user.IsAdmin = false;
+                                $rootScope.user.ID = data.data;
+                                // TODO delay
+                                $rootScope.centerData.NowPage = "login_ok";
+                                return;
+                            }
+                            $rootScope.centerData.NowPage = "login_error";
+                            return;
+                        }
+                        $rootScope.loadingPage.loadend(false);
+                        return;
                     }, function (response) {
                         console.log(response);
                         $rootScope.loadingPage.loadend(false);
-                        this.Logined = false;
-                        this.IsAdmin = false;
-                        this.Password = "";
-                        // TODO delay
+                        $rootScope.user.Logined = false;
+                        $rootScope.user.IsAdmin = false;
+                        $rootScope.user.Password = "";
                         $rootScope.centerData.NowPage = "login_error";
                     });
 
@@ -101,6 +110,7 @@ app.run(
                     this.Logined = false;
                     this.IsAdmin = false;
                     this.Password = "";
+                    this.ID = 0;
                     $rootScope.centerData.NowPage = "welcome";
                 },
                 ToLogNew: function () {
@@ -108,7 +118,7 @@ app.run(
                     $rootScope.lognew.userName = this.Name;
                     $http({
                         method: 'get',
-                        url: 'shop/register',
+                        url: 'register',
                         params: {
                             'username': this.Name,
                             'password': this.Password
@@ -117,21 +127,28 @@ app.run(
                     }).then(function (response) {
                         console.log(response);
                         $rootScope.loadingPage.loadend(true);
-                        // TODO 判断
-                        $rootScope.lognew.ok = true;
-                        $rootScope.centerData.NowPage = "lognew";
+                        if ("OK" == response.statusText) {
+                            var data = response.data;
+                            if (0 == data.err) {
+                                $rootScope.lognew.ok = true;
+                                $rootScope.centerData.NowPage = "lognew";
+                                return;
+                            }
+                            $rootScope.user.Logined = false;
+                            $rootScope.user.IsAdmin = false;
+                            $rootScope.user.Password = "";
+                            $rootScope.lognew.ok = false;
+                            $rootScope.centerData.NowPage = "lognew";
+                            return;
+                        }
+                        $rootScope.loadingPage.loadend(false);
+                        return;
                     }, function (response) {
                         console.log(response);
                         $rootScope.loadingPage.loadend(false);
-                        this.Logined = false;
-                        this.IsAdmin = false;
-                        this.Password = "";
                         // TODO delay
                         $rootScope.lognew.ok = false;
-                        $rootScope.centerData.NowPage = "lognew";
                     });
-                    // TODO
-                    $rootScope.centerData.NowPage = "lognew";
                 }
             };
 
@@ -163,7 +180,7 @@ app.run(
                 $rootScope.loadingPage.loadto();
                 $http({
                     method: 'get',
-                    url: '/shop/getItemById',
+                    url: 'getItemById',
                     params: {
                         "id": Obj.id
                     },
