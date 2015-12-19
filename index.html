@@ -23,7 +23,7 @@
 
     <span>
         <!--左头部LOGO-->
-        <a href="#">
+        <a href=".">
             <img class=".img-responsive" src="img/BBB.png" alt="BuyBuyBuy">
         </a>
     </span>
@@ -143,7 +143,7 @@
             </h1>
         </div>
         <div class="text-center">
-            <a ng-click='centerData.NowPage="explorer"'>ss</a>
+            <a class="btn btn-primary" ng-click='centerData.NowPage="explorer"'>点击进入</a>
         </div>
     </section>
 
@@ -205,8 +205,10 @@
     <section ng-switch-when="showLoading" class="text-center">
         <!--等待页-->
         <div>
-            <h1><small>正在从服务器获取数据</small></h1>
-            <div class="center">
+            <h1>
+                <small>正在从服务器获取数据</small>
+            </h1>
+            <div class="center" ng-show="!loadingPage.loaded">
                 <div class="loading"></div>
             </div>
             <div ng-show="loadingPage.loaded">
@@ -214,7 +216,11 @@
                     载入成功
                 </span>
                 <span ng-show="!loadingPage.ok">
-                    载入失败
+                    <small>
+                        载入失败
+                        ，错误原因：{{loadingPage.errorinfo.statusText}}
+                        ， 错误代码：{{loadingPage.errorinfo.statusCode}}
+                    </small>
                 </span>
             </div>
         </div>

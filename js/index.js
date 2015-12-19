@@ -46,14 +46,26 @@ app.run(
             $rootScope.loadingPage = {
                 loaded: false,
                 ok: false,
-                loadend: function (OKed) {
+                loadEndOk: function () {
                     this.loaded = true;
-                    this.ok = OKed;
+                    this.ok = true;
                 },
-                loadto: function () {
+                loadEndFalse: function (response) {
+                    this.loaded = true;
+                    this.ok = false;
+                    this.errorinfo.statusText = response.statusText;
+                    this.errorinfo.statusCode = response.status;
+                },
+                loadTo: function () {
                     $rootScope.centerData.NowPage = "showLoading";
-                    $rootScope.loadingPage.ok = false;
-                    $rootScope.loadingPage.loaded = false;
+                    this.ok = false;
+                    this.loaded = false;
+                    this.errorinfo.statusText = "Unkown";
+                    this.errorinfo.statusCode = "0";
+                },
+                errorinfo: {
+                    statusText: "",
+                    statusCode: 0
                 }
             };
 
@@ -65,7 +77,7 @@ app.run(
                 IsAdmin: false,
                 ToLogIn: function () {
 
-                    $rootScope.loadingPage.loadto();
+                    $rootScope.loadingPage.loadTo();
                     $http({
                         method: 'get',
                         url: 'login',
@@ -76,7 +88,7 @@ app.run(
                         timeout: 3000
                     }).then(function (response) {
                         console.log(response);
-                        $rootScope.loadingPage.loadend(true);
+                        $rootScope.loadingPage.loadEndOk();
                         if ("OK" == response.statusText) {
                             var data = response.data;
                             if (0 == data.err) {
@@ -90,15 +102,18 @@ app.run(
                             $rootScope.centerData.NowPage = "login_error";
                             return;
                         }
-                        $rootScope.loadingPage.loadend(false);
+                        $rootScope.loadingPage.loadEndFalse(response);
                         return;
                     }, function (response) {
                         console.log(response);
-                        $rootScope.loadingPage.loadend(false);
+                        $rootScope.loadingPage.loadEndFalse(response);
                         $rootScope.user.Logined = false;
                         $rootScope.user.IsAdmin = false;
                         $rootScope.user.Password = "";
-                        $rootScope.centerData.NowPage = "login_error";
+                        //if (response.status == 404) {
+                        //    return;
+                        //}
+                        //$rootScope.centerData.NowPage = "login_error";
                     });
 
                     // debug
@@ -114,7 +129,7 @@ app.run(
                     $rootScope.centerData.NowPage = "welcome";
                 },
                 ToLogNew: function () {
-                    $rootScope.loadingPage.loadto();
+                    $rootScope.loadingPage.loadTo();
                     $rootScope.lognew.userName = this.Name;
                     $http({
                         method: 'get',
@@ -126,7 +141,7 @@ app.run(
                         timeout: 3000
                     }).then(function (response) {
                         console.log(response);
-                        $rootScope.loadingPage.loadend(true);
+                        $rootScope.loadingPage.loadEndOk();
                         if ("OK" == response.statusText) {
                             var data = response.data;
                             if (0 == data.err) {
@@ -141,11 +156,11 @@ app.run(
                             $rootScope.centerData.NowPage = "lognew";
                             return;
                         }
-                        $rootScope.loadingPage.loadend(false);
+                        $rootScope.loadingPage.loadEndFalse(response);
                         return;
                     }, function (response) {
                         console.log(response);
-                        $rootScope.loadingPage.loadend(false);
+                        $rootScope.loadingPage.loadEndFalse(response);
                         // TODO delay
                         $rootScope.lognew.ok = false;
                     });
@@ -177,7 +192,7 @@ app.run(
             $rootScope.explorerClick = function (Obj) {
                 console.log(Obj.id);
                 // 跳转到等待页 发起请求 回调函数失败跳转回本页 成功跳转到显示页并填充数据
-                $rootScope.loadingPage.loadto();
+                $rootScope.loadingPage.loadTo();
                 $http({
                     method: 'get',
                     url: 'getItemById',
@@ -187,13 +202,13 @@ app.run(
                     timeout: 3000
                 }).then(function (response) {
                     console.log(response);
-                    $rootScope.loadingPage.loadend(true);
+                    $rootScope.loadingPage.loadEndOk();
                     // TODO delay
                     // TODO 填充
                     $rootScope.centerData.NowPage = "showProduct";
                 }, function (response) {
                     console.log(response);
-                    $rootScope.loadingPage.loadend(false);
+                    $rootScope.loadingPage.loadEndFalse(response);
                     // TODO delay
                     $rootScope.centerData.NowPage = "explorer";
                 });
