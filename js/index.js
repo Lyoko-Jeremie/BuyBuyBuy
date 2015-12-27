@@ -77,13 +77,13 @@ app.run(
                 IsAdmin: false,
                 ToLogIn: function () {
 
-                    // debug
-                    $rootScope.user.Logined = true;
-                    $rootScope.user.IsAdmin = true;
-                    $rootScope.user.ID = 123;
-                    $rootScope.user.SaveInfoToCookie();
-                    $rootScope.centerData.NowPage = "login_ok";
-                    return;
+                    //// debug
+                    //$rootScope.user.Logined = true;
+                    //$rootScope.user.IsAdmin = true;
+                    //$rootScope.user.ID = 123;
+                    //$rootScope.user.SaveInfoToCookie();
+                    //$rootScope.centerData.NowPage = "login_ok";
+                    //return;
 
 
                     $rootScope.loadingPage.loadTo();
@@ -343,8 +343,8 @@ app.run(
             $rootScope.AdminFunc.SaveProductEdit = function () {
                 // TODO
 
-                //debug
-                $rootScope.centerData.NowPage = "showProduct";
+                ////debug
+                //$rootScope.centerData.NowPage = "showProduct";
 
             };
             $rootScope.AdminFunc.Check = function () {
