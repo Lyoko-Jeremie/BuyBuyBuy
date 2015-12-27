@@ -77,6 +77,15 @@ app.run(
                 IsAdmin: false,
                 ToLogIn: function () {
 
+                    // debug
+                    $rootScope.user.Logined = true;
+                    $rootScope.user.IsAdmin = true;
+                    $rootScope.user.ID = 123;
+                    $rootScope.user.SaveInfoToCookie();
+                    $rootScope.centerData.NowPage = "login_ok";
+                    return;
+
+
                     $rootScope.loadingPage.loadTo();
                     $http({
                         method: 'get',
@@ -285,12 +294,54 @@ app.run(
             };
 
 
-            $rootScope.AdminFunc = {};
+            $rootScope.AdminFunc = {
+                UserList: [
+                    {
+                        id: 123,
+                        name: "123"
+                    },
+                    {
+                        id: 456,
+                        name: "456"
+                    }
+                ],
+                ProductList: [
+                    {
+                        id: 123,
+                        name: "123",
+                        price: 123,
+                        img: "img/BBB.png",
+                        texts: "123"
+                    },
+                    {
+                        id: 456,
+                        name: "456",
+                        price: 456,
+                        img: "456",
+                        texts: "456"
+                    }
+                ]
+            };
             $rootScope.AdminFunc.User = function () {
-
+                // TODO
+                $rootScope.centerData.NowPage = "UserManager";
+            };
+            $rootScope.AdminFunc.UserDelete = function (User) {
+                // TODO
             };
             $rootScope.AdminFunc.Product = function () {
-
+                // TODO
+                $rootScope.centerData.NowPage = "ProductManager";
+            };
+            $rootScope.AdminFunc.ProductEdit = function (Product) {
+                $rootScope.NowProduct = Product;
+                $rootScope.centerData.NowPage = "ProductEdit";
+            };
+            $rootScope.AdminFunc.ProductDelete = function (Product) {
+                // TODO
+            };
+            $rootScope.AdminFunc.SaveProductEdit = function () {
+                // TODO
             };
             $rootScope.AdminFunc.Check = function () {
 

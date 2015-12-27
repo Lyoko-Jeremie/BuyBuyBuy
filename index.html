@@ -41,7 +41,7 @@
 
 
 <!--菜单栏-->
-<nav class="navbar navbar-default">
+<nav id="menu" class="navbar navbar-default">
     <div class="container-fluid">
         <div class="collapse navbar-collapse">
 
@@ -55,9 +55,9 @@
                 <li> <!--class="active"-->
                     <a href="#" ng-click="AdminFunc.Product()">产品管理</a>
                 </li>
-                <li> <!--class="active"-->
-                    <a href="#" ng-click="AdminFunc.Check()">订单管理</a>
-                </li>
+                <!--<li> &lt;!&ndash;class="active"&ndash;&gt;-->
+                    <!--<a href="#" ng-click="AdminFunc.Check()">订单管理</a>-->
+                <!--</li>-->
             </ul>
             <ul ng-show="(!user.IsAdmin) && user.Logined" class="nav navbar-nav navbar-right">
                 <!--产品搜索-->
@@ -73,12 +73,12 @@
                     <!--占位符-->
                     <a></a>
                 </li>
-                <li> <!--class="active"-->
-                    <a href="#" ng-click="UserFunc.Check()">购物车</a>
-                </li>
-                <li> <!--class="active"-->
-                    <a href="#" ng-click="UserFunc.Pay()">支付</a>
-                </li>
+                <!--<li> &lt;!&ndash;class="active"&ndash;&gt;-->
+                    <!--<a href="#" ng-click="UserFunc.Check()">购物车</a>-->
+                <!--</li>-->
+                <!--<li> &lt;!&ndash;class="active"&ndash;&gt;-->
+                    <!--<a href="#" ng-click="UserFunc.Pay()">支付</a>-->
+                <!--</li>-->
                 <li> <!--class="active"-->
                     <a href="#" ng-click="UserFunc.Help()">帮助中心</a>
                 </li>
@@ -115,12 +115,12 @@
 
 <!--中部可变区开始-->
 
-<div class="container" ng-switch="centerData.NowPage">
+<div id="center" class="container" ng-switch="centerData.NowPage">
 
     <!--中部可变区-->
     <!--style="display: table;width: auto;margin-top: auto;margin-left: auto;"-->
     <!--<center></center>-->
-    <section ng-switch-when="welcome" class="text-center">
+    <section id="welcome" ng-switch-when="welcome" class="text-center">
         <!--welcome page-->
         <span>
             <!--XHTML实现-->
@@ -164,7 +164,7 @@
         </span>
     </section>
 
-    <section ng-switch-when="login_error" class="text-center">
+    <section id="login_error" ng-switch-when="login_error" class="text-center">
         <!--login error page-->
         <span>
             <!--XHTML实现-->
@@ -208,11 +208,11 @@
         </span>
     </section>
 
-    <section ng-switch-when="login_ok">
+    <section id="login_ok" ng-switch-when="login_ok">
         <!--login ok page-->
         <div class="text-center">
             <!--XHTML实现-->
-            <h1>
+            <h1 ng-show="!user.IsAdmin">
                 欢迎来到
                 <ruby>
                     Buy
@@ -250,12 +250,20 @@
             </h1>
         </div>
         <div class="text-center">
-            <a class="btn btn-primary" ng-click="GetProductList()">浏览所有产品</a>
+            <a class="btn btn-primary" ng-show="!user.IsAdmin" ng-click="GetProductList()">浏览所有产品</a>
             <!--TODO 用户信息  用户欢迎 页-->
+            <div ng-show="user.IsAdmin">
+                <h1>欢迎管理员{{user.Name}}登录</h1>
+                <div style="margin-top: 50px">
+                    <a class="btn btn-info btn-lg" style="margin-right: 50px" ng-click="AdminFunc.User()">会员管理</a>
+                    <a class="btn btn-info btn-lg" style="margin-left: 50px" ng-click="AdminFunc.Product()">产品管理</a>
+                    <!--<a class="btn btn-info btn-lg" style="margin-left: 50px" ng-click="AdminFunc.Check()">订单管理</a>-->
+                </div>
+            </div>
         </div>
     </section>
 
-    <section ng-switch-when="lognew" class="text-center">
+    <section id="lognew" ng-switch-when="lognew" class="text-center">
         <!--log new page-->
         <span>
             <!--XHTML实现-->
@@ -301,7 +309,7 @@
         </span>
     </section>
 
-    <section ng-switch-when="explorer">
+    <section id="explorer" ng-switch-when="explorer">
         <!--浏览商品页-->
         <div class="text-center">
             <!--XHTML实现-->
@@ -369,14 +377,14 @@
         </div>
     </section>
 
-    <section ng-switch-when="showProduct" class="text-center">
+    <section id="showProduct" ng-switch-when="showProduct" class="text-center">
         <!--商品页-->
         <div>
             <!--TODO 商品展示页-->
         </div>
     </section>
 
-    <section ng-switch-when="noProduct" class="text-center">
+    <section id="noProduct" ng-switch-when="noProduct" class="text-center">
         <!--no商品页-->
         <div>
             <h1>商品不见了？？！！</h1>
@@ -386,7 +394,7 @@
         </div>
     </section>
 
-    <section ng-switch-when="showLoading" class="text-center">
+    <section id="showLoading" ng-switch-when="showLoading" class="text-center">
         <!--等待页-->
         <div>
             <h1>
@@ -410,14 +418,77 @@
         </div>
     </section>
 
-    <section ng-switch-when="searchProduct" class="text-center">
+    <section id="searchProduct" ng-switch-when="searchProduct" class="text-center">
         <!--搜索页-->
         <div>
 
         </div>
     </section>
 
-    <section ng-switch-when="help" class="text-center">
+    <section id="UserManager" ng-switch-when="UserManager" class="center-block">
+        <!--用户管理-->
+        <div>
+            <h2>用户管理</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>编号</th>
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>操作</th>
+                </tr>
+                <tr ng-repeat='User in AdminFunc.UserList'>
+                    <td>{{$index}}</td>
+                    <td>{{User.id}}</td>
+                    <td>{{User.name}}</td>
+                    <td>
+                        <a class="btn btn-danger" ng-click="AdminFunc.UserDelete(User)">删除用户</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="ProductManager" ng-switch-when="ProductManager" class="center-block">
+        <!--产品管理-->
+        <div>
+            <h2>产品管理</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>编号</th>
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>价格</th>
+                    <th>操作</th>
+                </tr>
+                <tr ng-repeat='Product in AdminFunc.ProductList'>
+                    <td>{{$index}}</td>
+                    <td>{{Product.id}}</td>
+                    <td>{{Product.name}}</td>
+                    <td>{{Product.price}}</td>
+                    <td>
+                        <a class="btn btn-default" ng-click="AdminFunc.ProductEdit(Product)">编辑产品</a>
+                        <a class="btn btn-danger" ng-click="AdminFunc.ProductDelete(Product)">删除产品</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="ProductEdit" ng-switch-when="ProductEdit" class="center-block">
+        <!--产品编辑-->
+        <div class="form-group">
+            <h2>{{NowProduct.name}}</h2>
+            <img class="form-control-static" ng-src="{{NowProduct.img}}" style="height: 200px;width: 200px;"
+                 alt="{{Objs.texts}}">
+            <h3>售价：<input type="text" ng-model="NowProduct.price"></h3>
+            <h4>产品简介：</h4>
+            <!--<h3>{{NowProduct.texts}}</h3>-->
+            <div><input type="text" class="form-control" ng-model="NowProduct.texts"></div>
+            <a class="btn btn-danger" ng-click="AdminFunc.SaveProductEdit()" style="margin-top: 30px">保存修改</a>
+        </div>
+    </section>
+
+    <section id="help" ng-switch-when="help" class="text-center">
         <!--help page-->
         <span>
             <!--XHTML实现-->
@@ -461,7 +532,7 @@
         </span>
     </section>
 
-    <section ng-switch-when="aboutCompany" class="text-center">
+    <section id="aboutCompany" ng-switch-when="aboutCompany" class="text-center">
         <!--about page-->
         <!--XHTML实现-->
         <h1>
@@ -524,7 +595,7 @@
         </p>
     </section>
 
-    <section ng-switch-when="aboutBBB" class="text-center">
+    <section id="aboutBBB" ng-switch-when="aboutBBB" class="text-center">
         <!--about page-->
         <!--XHTML实现-->
         <h1>
@@ -588,7 +659,7 @@
 <!--<hr>-->
 
 <!--开发者检查-->
-<section ng-show="DebugMode" style="position: absolute;top: 0px;right: 0px;color: white;">
+<section id="debugShow" ng-show="DebugMode" style="position: absolute;top: 0px;right: 0px;color: white;">
     开发者检查:{{centerData.NowPage}}
 </section>
 
