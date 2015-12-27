@@ -342,6 +342,10 @@ app.run(
             };
             $rootScope.AdminFunc.SaveProductEdit = function () {
                 // TODO
+
+                //debug
+                $rootScope.centerData.NowPage = "showProduct";
+
             };
             $rootScope.AdminFunc.Check = function () {
 
